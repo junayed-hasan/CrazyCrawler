@@ -1,0 +1,391 @@
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('fonts/poppins/Poppins-Regular.ttf');
+  }
+
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url('fonts/poppins/Poppins-Medium.ttf');
+  }
+
+  @font-face {
+    font-family: Montserrat-Medium;
+    src: url('fonts/montserrat/Montserrat-Medium.ttf');
+  }
+
+  @font-face {
+    font-family: Montserrat-SemiBold;
+    src: url('fonts/montserrat/Montserrat-SemiBold.ttf');
+  }
+  
+  * {
+      margin: 0px; 
+      padding: 0px; 
+      box-sizing: border-box;
+  }
+  
+  body, html {
+      height: 100%;
+      font-family: Poppins-Regular, sans-serif;
+  }
+  /*---------------------------------------------*/
+  .nav{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5%;
+}
+
+.sidenavigation {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+  color: #fc00ff;
+  border-color: #fc00ff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  font-family: Montserrat-SemiBold;
+  font-size: 18px;
+  line-height: 1.2;
+  background-color: fuchsia;
+}
+
+.sidenavigation a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenavigation a:hover {
+  color: white;
+}
+
+.sidenavigation .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+  
+  /*---------------------------------------------*/
+  a {
+      font-family: Poppins-Regular;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #666666;
+      margin: 0px;
+      transition: all 0.4s;
+      -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+  }
+  
+  a:focus {
+      outline: none !important;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: #fc00ff;
+    border-color: #fc00ff;
+  }
+  
+  /*---------------------------------------------*/
+  button {
+      outline: none !important;
+      border: none;
+      background: transparent;
+  }
+  
+  button:hover {
+      cursor: pointer;
+  }
+  
+  iframe {
+      border: none !important;
+  } 
+  
+  /*======== dashboard ============*/
+  
+  .dash {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .container-dash {
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;;
+  }
+
+  
+  /*========= Form ===========*/
+  
+  .dash-form {
+    width: 100%;
+    display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -moz-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      -o-flex-wrap: wrap;
+      flex-wrap: wrap;
+      justify-content:space-around;
+  }
+
+  
+  
+  /*--- Button ----*/
+  
+  .button-clusters,
+  .button-search,
+  .button-about,
+  .button-settings {
+    font-family: Montserrat-SemiBold;
+    font-size: 18px;
+    line-height: 1.2;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    direction: row;
+    justify-content: center;
+    align-items: center;
+    width: calc((100% - 20px) / 2);
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .button-clusters::before,
+  .button-search::before,
+  .button-about::before,
+  .button-settings::before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
+    background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
+    background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
+    background: linear-gradient(45deg, #00dbde, #fc00ff);
+    opacity: 0;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .button-clusters {
+    color: #555555;
+    padding: 100px 0px 100px 0px;
+    margin-bottom: 120px;
+    margin-left: 40px;
+    width: 15%;
+    -ms-flex-align: center;
+    background-color: #fff;
+  }
+
+  .button-search {
+    color: #555555;
+    margin-bottom: 120px;
+    padding: 100px 0px 100px 0px;
+    margin-right: 40px;
+    width: 15%;
+    -ms-flex-align: center;
+    background-color: #fff;
+  }
+
+  .button-about {
+    color: #555555;
+    padding: 100px 0px 100px 0px;
+    margin-left: 40px;
+    width: 15%;
+    -ms-flex-align: center;
+    background-color: #fff;
+  }
+   
+  .button-settings {
+    color: #555555;
+    padding: 100px 0px 100px 0px;
+    margin-right: 40px;
+    width: 15%;
+    background-color: #fff;
+  }
+  
+  .button-clusters img {
+    width: 30px;
+    margin-right: 15px;
+    padding-bottom: 3px;
+  }
+  
+  .button-search img {
+    width: 35px;
+    margin-right: 5px;
+    padding-bottom: 3px;
+  }
+
+  .button-about img {
+    width: 35px;
+    margin-right: 5px;
+    padding-bottom: 3px;
+  }
+
+  .button-settings img {
+    width: 35px;
+    margin-right: 5px;
+    padding-bottom: 3px;
+  }
+  
+  .button-clusters:hover:before,
+  .button-search:hover:before,
+  .button-about:hover:before,
+  .button-settings:hover:before {
+    opacity: 1;
+  }
+  
+  .button-clusters:hover,
+  .button-search:hover,
+  .button-about:hover,
+  .button-settings:hover {
+    color: #fff;
+  }
+   
+  /*----- Button -----------*/
+  
+  .container-dash-form-button {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 17px;
+  }
+  
+  .dash-form-button {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 60px;
+    background-color: #333333;
+    border-radius: 10px;
+    margin-top: 50px;
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .dash-form-button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    opacity: 0;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
+    background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
+    background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
+    background: linear-gradient(45deg, #00dbde, #fc00ff);
+  }
+  
+  .dash-form-button:hover:before {
+    opacity: 1;
+  }
+  
+  /*------ Responsive ----------*/
+  
+  @media (max-width: 768px) {
+    .dash-form {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  
+  @media (max-width: 576px) {
+    .dash-form {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    @media (max-width: 576px) {
+      .button-clusters img,
+      .button-search img,
+      .button-about img,
+      .button-settings img {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  
+  .button-clusters,
+  .button-search,
+  .button-about,
+  .button-settings {
+      width: 100%;}
+    }
+  }

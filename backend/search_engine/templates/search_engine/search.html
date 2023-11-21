@@ -1,0 +1,186 @@
+{% block content %}
+{% load crispy_forms_tags %}
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700" rel="stylesheet" />
+  <link href="/static/search_engine/search.css" rel="stylesheet" />
+</head>
+
+<body>
+  
+  <div id="mySidenavigation" class="sidenavigation">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+    <a href="{% url 'search_engine-user' %}">Profile</a>
+    <a href="{% url 'search_engine-searchClusters' %}">Search In Clusters</a>
+    <a href="{% url 'search_engine-search' %}">Make A Cluster</a>
+    <a href="{% url 'search_engine-about' %}">About</a>
+    <a href="{% url 'search_engine-logout' %}">Logout</a>
+  </div>
+
+  <div class="nav" style="font-size:40px;cursor:pointer; color: crimson;" onclick="openNavigation()">&#9776;
+
+  </div>
+
+  <div class="searching" >
+
+
+    <form action = "" method = "POST">
+      {% csrf_token %}
+      <fieldset>
+        <legend>MAKE A CLUSTER</legend>
+      </fieldset>
+      {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      <h4> {{ message }} </h4>
+    </div>
+    {% endfor %}
+    {% endif %}
+      <div class="inner-form">
+        <div class="left">
+          <div class="input-wrap first">
+            <div class="input-field first">
+              <label>Cluster Name</label>
+              <input type="text" name = "cluster" placeholder="ex: Education PDFs" />
+            </div>
+          </div>
+          <div class="input-wrap second">
+            <div class="input-field second">
+              <label>Depth</label>
+              <div class="custom-select" style="width: 150px; font-weight: bold;">
+                <select name="depth">
+                  <option>Select Depth:</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-form">
+        <div class="left">
+          <div class="input-wrap first">
+            <div class="input-field first">
+              <label>URLs</label>
+              <input type="text" name = "urlsText" placeholder="ex: www.nsu.com, www.bracu.com" />
+            </div>
+          </div>
+          <div class="input-wrap second">
+            <div class="input-field second">
+              <label>Content</label>
+              <div class="custom-select" style="width:200px; font-weight: bold;">
+                <select name="contentType">
+                  <option>Select content type:</option>
+                  <option>All Content</option>
+                  <option>TEXT Files</option>
+                  <option>DOC Files</option>
+                  <option>PDF Files</option>
+                  <option>Non-HTML Files</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-search" type="submit" style="font-weight: bold;">EXECUTE</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function openNavigation() {
+      document.getElementById("mySidenavigation").style.width = "250px";
+    }
+
+    function closeNavigation() {
+      document.getElementById("mySidenavigation").style.width = "0";
+    }
+  </script>
+  <script>
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      ll = selElmnt.length;
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < ll; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+            /*when an item is clicked, update the original select box,
+            and the selected item:*/
+            var y, i, k, s, h, sl, yl;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            sl = s.length;
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < sl; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                yl = y.length;
+                for (k = 0; k < yl; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+          /*when the select box is clicked, close any other select boxes,
+          and open/close the current select box:*/
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+      /*a function that will close all select boxes in the document,
+      except the current select box:*/
+      var x, y, i, xl, yl, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      xl = x.length;
+      yl = y.length;
+      for (i = 0; i < yl; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < xl; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+    </script>
+</body>
+
+</html>
+{% endblock content %}

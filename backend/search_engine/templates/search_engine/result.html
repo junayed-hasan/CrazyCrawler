@@ -1,0 +1,125 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Result Page</title>
+    <link rel="shortcut icon" type="image/ico" href="" />
+    <link rel="stylesheet" type="text/css" href="/static/search_engine/result.css" />
+</head>
+
+<body>
+
+    <div id="mySidenavigation" class="sidenavigation">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+        <a href="{% url 'search_engine-user' %}">Profile</a>
+        <a href="{% url 'search_engine-searchClusters' %}">Search In Clusters</a>
+        <a href="{% url 'search_engine-search' %}">Make A Cluster</a>
+        <a href="{% url 'search_engine-about' %}">About</a>
+        <a href="{% url 'search_engine-logout' %}">Logout</a>
+      </div>
+
+    <div class = "nav" style="font-size:40px;cursor:pointer; color: crimson;" onclick="openNavigation()">&#9776;</span>
+      
+    </div>
+
+    <div id="header">
+        <div id="navbar">
+            <img id="searchbarimage" src='/static/search_engine/images/search.png' />
+            <div id="searchbar" type="text">
+                <input id="searchbartext" type="text" value="{{ keyword }}" />
+                <button id="searchbarmic">
+                    <img src="/static/search_engine/images/mic.png" />
+                </button>
+                <button id="searchbarbutton">
+                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="boxesicon"></div>
+            
+            <img id="profileimage" src="/static/search_engine/images/profile.png" />
+      </div>
+      <div id="optionsbar"> 
+      </div>
+       
+    </div>
+  
+    <div id="searchresultsarea">
+        <p id="searchresultsnumber">About 155,000 results (0.51 seconds) </p>
+        {% for link in mylist %}
+        <div class="searchresult">
+            <a href = "{{ link.link }}">{{ link.link }}</a> <button>▼</button>
+            <p>{{ link.content }}</p>
+           
+        </div>
+        {% endfor %}
+
+        
+        <div class="relatedsearches">
+            <h3>Searches related to web crawlers</h3>
+            <div class="relatedlists">
+                <ul class="relatedleft">
+                     <li>web <b>crawler</b> online</li>
+                    <li><b>free</b> web crawler</li>
+                    <li>web <b>crawler software</b></li>
+                    <li><b>types of</b> web crawler</li>
+                </ul>
+                <ul class="relatedright">
+                    <li>web<b>crawler python</b></li>
+                    <li><b>what is a </b>web<b>crawler and how does it work</b></li>
+                    <li>web <b>crawler is a example of</b></li>
+                    <li>web cralwers <b>podcast</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pagebar">
+            <ul class="pagelist">
+                <li class="pagelistprevious">Previous</li>
+                <li class="pagelistfirst">1</li>
+                <li class="pagelistnumber">2</li>
+                <li class="pagelistnumber">3</li>
+                <li class="pagelistnumber">4</li>
+                <li class="pagelistnumber">5</li>
+                <li class="pagelistnumber">6</li>
+                <li class="pagelistnumber">7</li>
+                <li class="pagelistnumber">8</li>
+                <li class="pagelistnumber">9</li>
+                <li class="pagelistnumber">10</li>
+                <li class="pagelistnext">Next</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div id="footerlocation">
+            <p>Somewhere </p>
+            <p> -(Location History) - Use precise location - Learn more</p>
+        </div>
+
+        <ul id="footermenu">
+            <li>Help</li>
+            <li>Send feedback</li>
+            <li>Privacy</li>
+            <li>Terms</li>
+        </ul>
+    </div>
+
+    <script>
+    function openNavigation() {
+      document.getElementById("mySidenavigation").style.width = "250px";
+    }
+
+    function closeNavigation() {
+      document.getElementById("mySidenavigation").style.width = "0";
+    }
+    </script>
+</body>
+
+</html>
+{% endblock content %}

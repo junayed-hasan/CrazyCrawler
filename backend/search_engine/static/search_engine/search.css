@@ -1,0 +1,398 @@
+body {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-before: 0;
+  -webkit-padding-start: 0;
+  -webkit-padding-end: 0;
+  -webkit-padding-after: 0;
+  border: 0;
+}
+
+/*---------------------------------------------*/
+  .nav{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5%;
+}
+
+.sidenavigation {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+  color: #fc00ff;
+  border-color: #fc00ff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  font-family: Montserrat-SemiBold;
+  font-size: 18px;
+  line-height: 1.2;
+  background-color: crimson;
+}
+
+.sidenavigation a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenavigation a:hover {
+  color: black;
+}
+
+.sidenavigation .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/*---------------------------------------------*/
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: #fa4251;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #fa4251;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*---------------------------------------------*/
+
+.categories {
+  position: relative;
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.categories:focus {
+  outline: none;
+}
+
+select {
+  text-transform: none;
+  border: none;
+}
+
+.categories[data-type*="select-one"] {
+  cursor: pointer;
+}
+
+
+.categories[data-type*="select-one"] .categories__button:hover, .categories[data-type*="select-one"] .categories__button:focus {
+  opacity: 1;
+}
+
+.categories[data-type*="select-one"] .categories__button:focus {
+  box-shadow: 0px 0px 0px 2px #00BCD4;
+}
+
+.categories[data-type*="select-one"]:after {
+  content: "";
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-color: #333333 transparent transparent transparent;
+  border-width: 5px;
+  position: absolute;
+  right: 11.5px;
+  top: 50%;
+  margin-top: -2.5px;
+  pointer-events: none;
+}
+
+
+.is-open .categories__inner {
+  border-radius: 2.5px 2.5px 0 0;
+}
+
+.is-flipped.is-open .categories__inner {
+  border-radius: 0 0 2.5px 2.5px;
+}
+
+
+
+.categories__list--dropdown {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  top: 100%;
+  margin-top: -1px;
+  border-bottom-left-radius: 2.5px;
+  border-bottom-right-radius: 2.5px;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+
+
+
+.categories__list--dropdown .categories__item--selectable.is-highlighted {
+  background-color: #f2f2f2;
+}
+
+.categories__list--dropdown .categories__item--selectable.is-highlighted:after {
+  opacity: .5;
+}
+
+.categories__item {
+  cursor: default;
+}
+
+.categories__item--selectable {
+  cursor: pointer;
+}
+
+
+.categories__button {
+  text-indent: -9999px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  border: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.categories__button:focus {
+  outline: none;
+}
+
+.categories__placeholder {
+  opacity: .5;
+}
+
+/*=====  End of categories  ======*/
+* {
+  box-sizing: border-box;
+}
+
+.searching {
+  min-height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  background: url("/static/search_engine/images/bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  padding: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.searching form {
+  width: 100%;
+  max-width: 914px;
+  margin: 0;
+}
+
+.searching form fieldset {
+  margin-bottom: 50px;
+}
+
+.searching form fieldset legend {
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.searching form .inner-form {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  
+  margin: 10px;
+}
+
+.searching form .inner-form .left {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.searching form .inner-form .input-wrap {
+  background: #fff;
+  height: 80px;
+  position: relative;
+  padding: 20px 25px 20px 25px;
+}
+
+.searching form .inner-form .input-wrap .input-field label {
+  font-size: 11px;
+  font-weight: 500;
+  display: block;
+  color: #555;
+}
+
+.searching form .inner-form .input-wrap .input-field input {
+  font-size: 16px;
+  color: #333;
+  background: transparent;
+  width: 100%;
+  border: 0;
+  font-family: 'Lato', sans-serif;
+  padding: 8px 0;
+}
+
+.searching form .inner-form .input-wrap .input-field input.placeholder {
+  color: #808080;
+}
+
+.searching form .inner-form .input-wrap .input-field input:-moz-placeholder {
+  color: #808080;
+}
+
+.searching form .inner-form .input-wrap .input-field input::-webkit-input-placeholder {
+  color: #808080;
+}
+
+.searching form .inner-form .input-wrap .input-field input.hover, .searching form .inner-form .input-wrap .input-field input:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+.searching form .inner-form .input-wrap.first {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  border-radius: 3px 0 0 3px;
+}
+
+.searching form .inner-form .input-wrap.second {
+  min-width: 262px;
+  border-radius: 0 3px 3px 0;
+  border-left: 1px solid #e5e5e5;
+}
+
+.searching form .input-select {
+  height: 34px;
+  padding: 10px 0 6px 0;
+}
+
+
+.searching form .categories__inner .categories__list.categories__list--single {
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  -ms-flex-align: center;
+      align-items: center;
+  height: 100%;
+}
+
+
+
+.searching form .categories__inner .categories__list--single .categories__item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  height: 100%;
+}
+
+.searching form .categories__list.categories__list--dropdown {
+  border: 0;
+  background: #fff;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 3px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.searching form .btn-search {
+  min-width: 110px;
+  height: 80px;
+  padding: 0 15px;
+  background: #fa4251;
+  white-space: nowrap;
+  border-radius: 3px;
+  font-size: 16px;
+  color: #fff;
+  transition: all .2s ease-out, color .2s ease-out;
+  border: 0;
+  cursor: pointer;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 10px;
+}
+
+.searching form .btn-search:hover {
+  background: #f9293a;
+}
+

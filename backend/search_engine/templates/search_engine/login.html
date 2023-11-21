@@ -1,0 +1,117 @@
+{% block content %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="/static/search_engine/login.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<div class="login">
+
+		<div class="container-profileLogin"
+			style="background-image: url('/static/search_engine/images/background-1.jpg');">
+			{% if messages %}
+			{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				<h4> {{ message }} </h4>
+			</div>
+			{% endfor %}
+			{% endif %}
+
+			<div id="mySidenavigation" class="sidenavigation" style="font-weight: bold;">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+				<a href="{% url 'search_engine-login' %}">Login</a>
+				<a href="{% url 'search_engine-signup' %}">Signup</a>
+				<a href="{% url 'search_engine-about' %}">About</a>
+			</div>
+
+			<div class="nav" style="font-size:40px;cursor:pointer; color: black;" onclick="openNavigation()">
+				&#9776;</span>
+
+			</div>
+			<div class="wrap-profileLogin">
+				<form class="profileLogin-form validate-form">
+					<span class="profileLogin-form-title">
+						Sign In With
+					</span>
+
+					<a href="{% provider_login_url 'google' %}" style="text-decoration:none;" class="button-google">
+						<img src="/static/search_engine/images/icons/icon-google.png" alt="GOOGLE">
+						Google
+					</a>
+
+
+					<a href="{% provider_login_url "facebook" method="oauth2" %}" style="text-decoration:none;"
+						class="button-face">
+						<img src="/static/search_engine/images/icons/logo-facebook.png" alt="FACEBOOK">
+						<i class="fa fa-facebook-official">
+						</i>
+						Facebook
+					</a>
+
+				</form>
+
+				<form method="POST">
+					{% csrf_token %}
+
+					<fieldset class="form-group">
+						{{ form|crispy }}
+					</fieldset>
+
+					<a href="{% url 'search_engine-accountRecovery' %}" class="text3">
+						Forgot Password?
+					</a>
+
+					<div class="container-profileLogin-form-button">
+						<button class="profileLogin-form-button">
+							Sign In
+						</button>
+					</div>
+
+					<div class="sign-up-prompt">
+						<span class="text2">
+							Not a member?
+						</span>
+
+						<a href="{% url 'search_engine-signup' %}" class="text2">
+							Sign Up Now
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function openNavigation() {
+			document.getElementById("mySidenavigation").style.width = "250px";
+		}
+
+		function closeNavigation() {
+			document.getElementById("mySidenavigation").style.width = "0";
+		}
+	</script>
+</body>
+
+</html>
+
+
+
+{% endblock content %}

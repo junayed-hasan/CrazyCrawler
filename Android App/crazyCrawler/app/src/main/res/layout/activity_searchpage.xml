@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/userInfo"
+        android:layout_width="267dp"
+        android:layout_height="89dp"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="267dp"
+            android:layout_height="45dp"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textFontWeight="@integer/material_motion_duration_short_2"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="267dp"
+            android:layout_height="45dp"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textFontWeight="@integer/material_motion_duration_short_2"/>
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="117dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="280dp"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"/>
+
+    <LinearLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="279dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/keyword"
+            android:layout_width="276dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/baseline_search_20"
+            android:drawablePadding="20dp"
+            android:hint="Search Keyword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <Spinner
+            android:layout_width="96dp"
+            android:layout_height="38dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/signOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:layout_marginTop="110dp"
+        android:backgroundTint="@color/common_google_signin_btn_tint" />
+
+</RelativeLayout>

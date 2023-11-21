@@ -1,0 +1,70 @@
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="/static/search_engine/user.css">
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js'></script>
+  <script src="/static/search_engine/user.js"></script>
+
+</head>
+
+<body style="background-image: url('/static/search_engine/images/background-1.jpg');">
+  <div class="profile">
+    <div id="mySidenavigation" class="sidenavigation" style="font-weight: bold;">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+      <a href="{% url 'search_engine-user' %}">Profile</a>
+      <a href="{% url 'search_engine-searchClusters' %}">Make A Cluster</a>
+      <a href="{% url 'search_engine-search' %}">Search</a>
+      <a href="{% url 'search_engine-about' %}">About</a>
+      <a href="{% url 'search_engine-logout' %}">Logout</a>
+    </div>
+
+    <div class="nav" style="font-size:40px;cursor:pointer; color: rgb(0, 160, 253);" onclick="openNavigation()">
+      &#9776;</span>
+
+    </div>
+
+    <header class="header">
+      <div class="details">
+        <img src="{{ user.profile.image.url }}" alt="Upload Photo" class="profile-pic">
+        <h1 class="heading">{{ user.username }}</h1>
+        <div class="location">
+          <p>{{ user.email }}</p><br>
+          <p>Joined On: {{ user.date_joined }}</p>
+          <p></p>
+
+          
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <script>
+    function openNavigation() {
+      document.getElementById("mySidenavigation").style.width = "250px";
+    }
+
+    function closeNavigation() {
+      document.getElementById("mySidenavigation").style.width = "0";
+    }
+  </script>
+
+</body>
+
+</html>
+
+{% endblock content %}
