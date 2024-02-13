@@ -6,7 +6,7 @@ Welcome to our repository!
 
 ## Project Description
 
-"File Search Engine App" is a new, self-contained product designed with the aim of making web searching easier, more efficient, and organized. As of the current release, it is a self-sustaining product without any subsystem or integrable part. The product is for any individual or group looking to search data from the web precisely and effectively. Using it will enable users to make clusters of URLs and search for specific content in their cluster. Users can download, store, and use the contents easily and efficiently. Especially for regular users, fast scraping of data using web crawlers is of great importance. With the aim of making it easier for them, the product is developed.
+"CrazyCrawler" is a new, self-contained product designed with the aim of making web searching easier, more efficient, and organized. As of the current release, it is a self-sustaining product without any subsystem or integrable part. The product is for any individual or group looking to search data from the web precisely and effectively. Using it will enable users to make clusters of URLs and search for specific content in their cluster. Users can download, store, and use the contents easily and efficiently. Especially for regular users, fast scraping of data using web crawlers is of great importance. With the aim of making it easier for them, the product is developed.
 
   
 
@@ -89,11 +89,7 @@ The following functionalities are included in the product:
 >The application is compatible with both desktops (web-based) and Android devices.
 
   
+*** Contributions can be viewed in: https://github.com/alifelham/File-Search-Engine-App
 
 ## Contact Details:
 Mohammad Junayed Hasan: junayedhasan100@gmail.com
-
-Alif Elham Khan: elhamk [DOT] corp [AT] gmail [DOT] com <br>
-
-Humayra Anjum: humayrakw [AT] gmail [DOT] com
-
