@@ -1,6 +1,6 @@
 # CrazyCrawler
 
-Welcome to our repository!
+Welcome to the repository!
 
   
 
