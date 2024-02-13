@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30eed702-0bd5-47f7-bbdf-3c5d947026d0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/crawling/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/crawling/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/crawling/management/commands/crawl.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/crawling/management/commands/crawl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/crawling/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/crawling/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/crawling/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/crawling/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawling/crawling/spiders/fetchData.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawling/crawling/spiders/fetchData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search_engine/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/search_engine/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search_engine/templates/search_engine/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/search_engine/templates/search_engine/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search_engine/templates/search_engine/searchClusters.html" beforeDir="false" afterPath="$PROJECT_DIR$/search_engine/templates/search_engine/searchClusters.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search_engine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/search_engine/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search_engine/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/search_engine/views.py" afterDir="false" />
     </list>

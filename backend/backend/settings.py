@@ -13,13 +13,14 @@ SECRET_KEY = 'PASS'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.0.2.2', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.contenttypes.models.ContentType',
     'search_engine.apps.SearchEngineConfig',  # connecting search_engine app
-    #'crawling.apps.CrawlingConfig',
+    # 'crawling.apps.CrawlingConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -48,6 +49,7 @@ DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
 SITE_ID = 4
 
 MIDDLEWARE = [
+    'django.contrib.contenttypes',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -85,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'people',
         'USER': 'root',
-        'PASSWORD': 'junu.100',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -165,7 +167,9 @@ LOGOUT_REDIRECT_URL = ''
 LOGIN_URL = 'search_engine-login'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-     'rest_framework.permissions.AllowAny',
-]
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication', # session-based user authentication
+        'knox.auth.TokenAuthentication',  # token-based user authentication
+    ]
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Clusters</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+
+    <div id="mySidenavigation" class="sidenavigation">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+      <a href="#">Profile</a>
+      <a href="#">Make a cluster</a>
+      <a href="#">Saved clusters</a>
+      <a href="#">Search</a>
+      <a href="#">About</a>
+      <a href="#">Settings</a>
+    </div>
+
+    <span style="font-size:40px;cursor:pointer; color: floralwhite;" onclick="openNavigation()">&#9776;</span>
+
+    <img class = "top" src="images/background.jpg">
+
+    <div class = "head">
+      <h2>Saved Clusters</h2>
+      <h6>~Navigate through or search across your saved clusters.</h6>
+      <h6>~Edit a cluster by adding or deleting a URL.</h6>
+      <h6>~Delete a cluster.</h6>
+
+    </div>
+
+    <img class = "middle" src="images/saved.svg">
+
+      
+    </div>
+    <script>
+    function openNavigation() {
+      document.getElementById("mySidenavigation").style.width = "250px";
+    }
+
+    function closeNavigation() {
+      document.getElementById("mySidenavigation").style.width = "0";
+    }
+    </script>
+   
+  </body>
+</html> 

@@ -13,22 +13,31 @@ import django
 
 BOT_NAME = 'crawling'
 
+
+# ------------ DJANGO SETTINGS ------------
+
 SPIDER_MODULES = ['crawling.spiders']
 NEWSPIDER_MODULE = 'crawling.spiders'
 
 # django project integration with scrapy
 # connecting django settings to spider to be able to use other django apps
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".."))
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
+
 # to be able to use django outside of manage.py context, we  explicitly set up the django
 django.setup()
+
+# -------------------------------------------
+
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'crawling (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36'
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
 

@@ -1,36 +1,47 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from knox.models import AuthToken
+from knox.views import LoginView as KnoxLoginView
+from rest_framework import generics, permissions
+from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.response import Response
 from search_engine.forms import People, ProfileUpdateForm, UserUpdateForm
-from search_engine.models import CrawlingQueue, Item
+from search_engine.models import CrawlingQueue
 from crawling.crawling.items import CrawlingItem
-from .serializers import UserSerializer, ItemSerializer
-from .documents import ItemDocument
-from django.contrib.auth.models import User
-from rest_framework import viewsets
-from rest_framework import permissions
+from .serializers import UserSerializer, RegisterSerializer
+# from backend.crawling.crawling.spiders.fetchData import PDFClass, DocumentClass
 
 # Create your views here.
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+class LoginAPI(KnoxLoginView):
+    permission_classes = (permissions.AllowAny,)
 
-class ItemViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Item.objects.all()
-    serializer_class = ItemSerializer
+    def post(self, request, format=None):
+        serializer = AuthTokenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)
+        return super(LoginAPI, self).post(request, format=None)
 
 def accountRecovery(request):
     return render(request, 'search_engine/recoveryPass.html', {'title': 'accountRecovery'})
 
+# Register API
+class RegisterAPI(generics.GenericAPIView):
+    serializer_class = RegisterSerializer
+    queryset = User.objects.all()
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+        "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        "token": AuthToken.objects.create(user)[1]
+        })
 
 def signup(request):
     if request.method == 'POST':
@@ -67,6 +78,9 @@ def search(request):
 
     return render(request, 'search_engine/search.html', {'title': 'search'})
 
+clusterID = ''
+keyword = ''
+
 @login_required
 def searchClusters(request):
     clusters = CrawlingQueue.objects.all().values_list('clusterName').filter(
@@ -74,30 +88,18 @@ def searchClusters(request):
 
     clusters = [x[0] for x in clusters]  # convert tuples to values of a list
 
-    #CrawlingQueue.objects.filter(clusterName = 'PDFs').delete()
-    #CrawlingQueue.objects.filter(clusterName = 'Unis').delete()
-    #CrawlingQueue.objects.filter(clusterName = 'DSDSD').delete()
-
-    print("deleted")
-
     if request.method == 'POST':
         clusterID = request.POST.get('cluster')
         keyword = request.POST.get('keyword')
-
-        relevant_links = ItemDocument.search().filter("match", username = request.user.username).filter("match", clustername = clusterID).filter("term", content = keyword)
-
-        print("Links: ")
-
-        for x in relevant_links:
-            print(x.link)
-
-        return render(request, 'search_engine/result.html', {'mylist': relevant_links, 'keyword': keyword})
-
+        return render(request, 'search_engine/result.html', {'clusterID': clusterID, 'keyword': keyword})  # render the clusters to html template using clusters
     return render(request, 'search_engine/searchClusters.html',
                   {'clusters': clusters})  # render the clusters to html template using clusters
 
 @login_required
 def result(request):
+    relevant_links = CrawlingItem.objects.all().values_list('link').filter(username = request.user.username, clustername = clusterID, link__icontains = keyword)
+    print(clusterID)
+    print(keyword)
     return render(request, 'search_engine/result.html')
 
 @login_required

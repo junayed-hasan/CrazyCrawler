@@ -33,14 +33,14 @@
           <div class="input-wrap first">
             <div class="input-field first">
               <label>Search</label>
-              <input type="text" name = "keyword" placeholder="ex: NSU advising" />
+              <input type="text" name = "urlsText" placeholder="ex: NSU advising" />
             </div>
           </div>
           <div class="input-wrap second">
             <div class="input-field second">
               <label>Cluster</label>
               <div class="custom-select" style="width:200px;">
-                <select name="cluster">
+                <select name="contentType">
                   <option>Select a cluster:</option>
                   {% for cluster in clusters %}
                   <option>{{ cluster }}</option>

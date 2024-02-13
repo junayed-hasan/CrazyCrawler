@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div id="mySidenavigation" class="sidenavigation">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+      <a href="#">Profile</a>
+      <a href="#">Make a cluster</a>
+      <a href="#">Saved clusters</a>
+      <a href="#">Search</a>
+      <a href="#">About</a>
+      <a href="#">Settings</a>
+    </div>
+
+    <div class = "nav" style="font-size:40px;cursor:pointer; color: fuchsia;" onclick="openNavigation()">&#9776;</span>
+      
+    </div>
+	
+	<div class="dash">
+		<div class="container-dash" style="background-image: url('images/background-1.jpg');">
+                
+			   <form class="dash-form validate-form">
+					<a href="#" style="text-decoration:none;" class="button-clusters">
+						<img src="images/icons/clusters.svg" alt="CLUSTERS">
+						Clusters
+					</a>
+					
+					<a href="#" style="text-decoration:none;" class="button-search">
+						<img src="images/icons/search.svg" alt="SEARCH">
+						Search
+         			</a>
+
+                    <a href="#" style="text-decoration:none;" class="button-about">
+						<img src="images/icons/about.svg" alt="ABOUT">
+						About
+					</a>
+
+                    <a href="#" style="text-decoration:none;" class="button-settings">
+						<img src="images/icons/settings.svg" alt="SETTINGS">
+						Settings
+					</a>
+				</form>
+				
+		</div>
+	</div>
+
+	<script>
+    function openNavigation() {
+      document.getElementById("mySidenavigation").style.width = "250px";
+    }
+
+    function closeNavigation() {
+      document.getElementById("mySidenavigation").style.width = "0";
+    }
+    </script>
+
+</body>
+</html>

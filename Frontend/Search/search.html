@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div id="mySidenavigation" class="sidenavigation">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+      <a href="#">Profile</a>
+      <a href="#">Make a cluster</a>
+      <a href="#">Saved clusters</a>
+      <a href="#">Search</a>
+      <a href="#">About</a>
+      <a href="#">Settings</a>
+    </div>
+
+    <div class = "nav" style="font-size:40px;cursor:pointer; color: crimson;" onclick="openNavigation()">&#9776;</span>
+      
+    </div>
+
+    <div class="searching">
+      <form>
+        <fieldset>
+          <legend>SEARCH THE WEB</legend>
+        </fieldset>
+        <div class="inner-form">
+          <div class="left">
+            <div class="input-wrap first">
+              <div class="input-field first">
+                <label>URL</label>
+                <input type="text" placeholder="ex: www.nsu.com" />
+              </div>
+            </div>
+            <div class="input-wrap second">
+              <div class="input-field second">
+                <label>Content</label>
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="">All Content</option>
+                    <option>TEXT Files</option>
+                    <option>DOC Files</option>
+                    <option>PDF Files</option>
+		    <option>Non-HTML Files</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-search" type="button">SEARCH</button>
+        </div>
+      </form>
+    </div>
+    <script src="js/extention/choices.js"></script>
+    <script>
+      const choices = new choices('[data-trigger]',
+      {
+        searchEnabled: false,
+        itemSelectText: '',
+      });
+
+    </script>
+
+    <script>
+    function openNavigation() {
+      document.getElementById("mySidenavigation").style.width = "250px";
+    }
+
+    function closeNavigation() {
+      document.getElementById("mySidenavigation").style.width = "0";
+    }
+    </script>
+
+  </body>
+</html>

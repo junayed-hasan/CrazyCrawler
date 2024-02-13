@@ -1,15 +1,21 @@
 from rest_framework import serializers
-from .models import Item
 from django.contrib.auth.models import User
 #serializers take the python model and turn it into JSON
 
 # User Serializer
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('id', 'username', 'email')
 
-class ItemSerializer(serializers.HyperlinkedModelSerializer):
+# Register Serializer
+class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Item
-        fields = '__all__'
+        model = User
+        fields = ('id', 'username', 'email', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
+
+        return user

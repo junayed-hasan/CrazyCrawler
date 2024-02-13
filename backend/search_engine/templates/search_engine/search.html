@@ -8,7 +8,13 @@
 </head>
 
 <body>
-  
+  {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      <h4> {{ message }} </h4>
+    </div>
+    {% endfor %}
+    {% endif %}
   <div id="mySidenavigation" class="sidenavigation">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
     <a href="{% url 'search_engine-user' %}">Profile</a>
@@ -30,13 +36,6 @@
       <fieldset>
         <legend>MAKE A CLUSTER</legend>
       </fieldset>
-      {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-      <h4> {{ message }} </h4>
-    </div>
-    {% endfor %}
-    {% endif %}
       <div class="inner-form">
         <div class="left">
           <div class="input-wrap first">
@@ -86,7 +85,7 @@
             </div>
           </div>
         </div>
-        <button class="btn-search" type="submit" style="font-weight: bold;">EXECUTE</button>
+        <button class="btn-search" type="submit" style="font-weight: bold;">SEARCH</button>
       </div>
     </form>
   </div>

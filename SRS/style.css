@@ -1,0 +1,53 @@
+nav[data-toggle=toc] {
+  margin-top: 30px;
+  margin-right: 60px;
+  margin-left: 10px;
+}
+
+/* small screens */
+@media (max-width: 768px) {
+  /* override the Affix plugin so that the navigation isn't sticky */
+  nav.affix[data-toggle='toc'] {
+    position: static;
+  }
+
+  /* don't expand nested items, which pushes down the rest of the page when navigating */
+  nav[data-toggle=toc] .nav .active .nav {
+    display: none;
+  }
+}
+#UseCaseDiagram {
+  height: 800px;
+  align-content: center;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.affix {
+ border: 1px solid #eee;
+max-height: 90%;
+padding: 100px 40x 0px 0px;
+ margin-right: 80%;
+align: left;
+	overflow-y: scroll;
+}
+
+.col-sm-9
+{
+  padding: 0px 0px 0px 150px;
+}
+
+nav[data-toggle=toc] .nav>li>a {
+	
+	font-size: 16px;
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+nav[data-toggle=toc] .nav .nav>li>a {
+	font-size: 14px;
+	padding: 8px;
+}

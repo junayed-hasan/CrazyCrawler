@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SRS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+  <link rel="stylesheet" media="screen" href="./style.css">
+  <link rel="stylesheet" media="print" href="print.css" />
+  <style>
+    .column {
+      float: left;
+      width: 50%;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .cover, .content {
+      display: none;
+    }
+
+    @media print {
+
+      /* visible when printed */
+      .cover, .content {
+        display: block;
+      }
+
+    }
+  </style>
+
+</head>
+
+<body style="margin: 30px;">
+
+  <div class="cover" style = 'page-break-after: always; margin-top: 30%;'>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:60px;line-height:115%;">&nbsp; &nbsp; Software Requirements Specification</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:50px;line-height:115%;">&nbsp; &nbsp; &nbsp;for</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:61px;line-height:115%;">&nbsp; &nbsp;&ldquo;crazyCrawler&rdquo;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:61px;line-height:115%;">&nbsp;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:61px;line-height:115%;">&nbsp;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp; &nbsp; &nbsp; &nbsp;Version 1.0 approved</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><strong><span style="font-size:41px;line-height:115%;">&nbsp; &nbsp; &nbsp; &nbsp;Prepared by:</span></strong></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp; &nbsp; &nbsp; &nbsp;Alif Elham Khan</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp; &nbsp; &nbsp; &nbsp;Humayra Anjum&nbsp;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp; &nbsp; &nbsp; &nbsp;Mohammad Junayed Hasan</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp; &nbsp; &nbsp; &nbsp;North South University&nbsp;</span></p>
+<p style='margin:0in;line-height:115%;font-size:15px;font-family:"Arial",sans-serif;margin-right:-688.0pt;'><span style="font-size:41px;line-height:115%;">&nbsp; &nbsp; &nbsp; 16th November, 2021&nbsp;</span></p>
+</div>
+
+<div class = "content" style='height: 100%; width: 100%; font-size: 25px; line-height: 30px; page-break-after: always;'>
+  <p style="margin: 6pt 0in 12pt; font-size: 24px; font-family: Times, serif; font-weight: bold; text-align: left;">Table of Contents</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">Table of Contents................................................................................................................................................................ ii</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">Revision History...................................................................................................................................................................ii</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">1. &nbsp; Introduction....................................................................................................................................................................1</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">1.1 &nbsp; Purpose.................................................................................................................................................................................. 1</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">1.2 &nbsp; Document Conventions..........................................................................................................................................................1</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">1.3 &nbsp; Intended Audience and Reading Suggestions....................................................................................................................... 1</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">1.4 &nbsp; Product Scope....................................................................................................................................................................... 1</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">1.5 &nbsp; References............................................................................................................................................................................ 1</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-size: 16px; font-family: Times, serif; font-weight: bold;">2. &nbsp; Overall Description...................................................................................................................................................... 2</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">2.1 &nbsp; Product Perspective.............................................................................................................................................................. 2</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">2.2 &nbsp; Product Functions................................................................................................................................................................. 2</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">2.3 &nbsp; User Classes and Characteristics.......................................................................................................................................... 2</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">2.4 &nbsp; Operating Environment........................................................................................................................................................ 2</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">2.5 &nbsp; Design and Implementation Constraints.............................................................................................................................. 2</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">2.6 &nbsp; User Documentation............................................................................................................................................................. 2</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt; font-family: Times, serif;">2.7 &nbsp; Assumptions and Dependencies........................................................................................................................................... 3</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">3. &nbsp; External Interface Requirements............................................................................................................................... 3</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">3.1 &nbsp; User Interfaces..................................................................................................................................................................... 3</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">3.2 &nbsp; Hardware Interfaces............................................................................................................................................................. 3</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">3.3 &nbsp; Software Interfaces.............................................................................................................................................................. 3</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">3.4 &nbsp; Communications Interfaces................................................................................................................................................. 3</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">4. &nbsp; System Features........................................................................................................................................................... 4</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">4.1 &nbsp; System Feature 1................................................................................................................................................................. 4</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">4.2 &nbsp; System Feature 2 (and so on).............................................................................................................................................. 4</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">5. &nbsp; Other Nonfunctional Requirements.......................................................................................................................... 4</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">5.1 &nbsp; Performance Requirements................................................................................................................................................. 4</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">5.2 &nbsp; Safety Requirements........................................................................................................................................................... 5</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">5.3 &nbsp; Security Requirements........................................................................................................................................................ 5</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">5.4 &nbsp; Software Quality Attributes................................................................................................................................................ 5</p>
+  <p style="margin: 0in 0in 0in 13.5pt; text-align: left; : 11pt;  font-family: Times, serif;">5.5 &nbsp; Business Rules.................................................................................................................................................................... 5</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt;  font-family: Times, serif; font-weight: bold;">6. &nbsp; Other Requirements.................................................................................................................................................... 5</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt;  font-family: Times, serif; font-weight: bold;">Appendix A: Glossary........................................................................................................................................................ 5</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">Appendix B: Analysisodels................................................................................................................................................ 5</p>
+  <p style="margin: 3pt 0in 0in 0.25in; text-align: left; text-indent: -0.25in; : 11pt; font-family: Times, serif; font-weight: bold;">Appendix C: To B.etermin.ist............................................................................................................................................ 6</p>
+  
+  <p style="margin: 6pt 0in 12pt; font-size: 24px; font-family: Times, serif; font-weight: bold; text-align: left;">Revision History</p>
+  <table style="border-collapse: collapse; border: none; margin-right: calc(2%); width: 98%;">
+      <tbody>
+          <tr>
+              <td style="width: 1.5in;border-width: 1.5pt 1pt 4.5pt 1.5pt;border-style: solid solid double;border-color: windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;"><strong>Name</strong></p>
+              </td>
+              <td style="width: 58.5pt;border-top: 1.5pt solid windowtext;border-left: none;border-bottom: 4.5pt double windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;"><strong>Date</strong></p>
+              </td>
+              <td style="width: 247.7pt;border-top: 1.5pt solid windowtext;border-left: none;border-bottom: 4.5pt double windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;"><strong>Reason For Changes</strong></p>
+              </td>
+              <td style="width: 1.1in;border-top: 1.5pt solid windowtext;border-left: none;border-bottom: 4.5pt double windowtext;border-right: 1.5pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;"><strong>Version</strong></p>
+              </td>
+          </tr>
+          <tr>
+              <td style="width: 1.5in;border-top: none;border-left: 1.5pt solid windowtext;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+              <td style="width: 58.5pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+              <td style="width: 247.7pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+              <td style="width: 1.1in;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1.5pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+          </tr>
+          <tr>
+              <td style="width: 1.5in;border-top: none;border-left: 1.5pt solid windowtext;border-bottom: 1.5pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+              <td style="width: 58.5pt;border-top: none;border-left: none;border-bottom: 1.5pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+              <td style="width: 247.7pt;border-top: none;border-left: none;border-bottom: 1.5pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+              <td style="width: 1.1in;border-top: none;border-left: none;border-bottom: 1.5pt solid windowtext;border-right: 1.5pt solid windowtext;padding: 0in 5.4pt;vertical-align: top;">
+                  <p style="line-height: 12pt; font-size: 16px; font-family: Times, serif; margin: 2pt 0in; text-align: left;">&nbsp;</p>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+  <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+  <script src='https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+  <body data-spy="scroll" data-target="#toc">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+        <div class="col-sm-9">
+          <h1 class="page-header" id="SRS">Software Requirements Specification</h1>
+
+          <h2 id="intro-description">1. Introduction</h2>
+
+          <h3 id="purpose">1.1 Purpose</h3>
+
+          <twitterwidget class="twitter-tweet twitter-tweet-rendered" id="twitter-widget-0"
+            data-tweet-id="291978260433219584"
+            style="position: static; visibility: visible; display: block; transform: rotate(0deg); max-width: 100%; width: 500px; min-width: 220px; margin-top: 10px; margin-bottom: 10px;">
+          </twitterwidget>
+          <script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+          <p>This document details the project plan for the development of “crazyCrawler.” <br>
+
+            Apart from project investors, this document is intended for the developers, designers, testers, professional
+            and personal users who are working on “crazyCrawler.”
+            This plan includes a summary of:</p>
+
+          <ul>
+            <li>How the system is going to function</li>
+            <li>The technology and interfaces used for the development of the project</li>
+            <li>Scope of the project from the development viewpoint</li>
+            <li>System Features</li>
+            <li>Other nonfunctional Requirements</li>
+            <li>Overall Description</li>
+          </ul>
+
+          <p>Many big data companies depend on data that is scraped from the internet. They heavily depend on web
+            crawlers. Often their job gets messy when they are trying to
+            fetch files like pdfs, documents or texts. We are developing a search engine which any data driven company/
+            user can use to easily fetch the document they are looking
+            for. It is as easy as putting a URL in the search bar and choosing what files to get, and viola they will
+            have all links leading to such files crawled and indexed for
+            them. Users can use this intuitive search engine not only to easily fetch such files, but also to create
+            clusters on this data.</p>
+
+
+
+          <h3 id="doc-con">1.2 Document Conventions</h3>
+          <p><span style="color: #000000;">The following conventions are used in this doucment: </span></p>
+          <table style="text-align: justify; height: 78px;" border="2" width="360" cellspacing="1" cellpadding="1">
+            <tbody>
+              <tr>
+                <td colspan="1" rowspan="1" width="21%"><span style="color: #000000;">DB</span></td>
+                <td colspan="1" rowspan="1" width="78%"><span style="color: #000000;">Database</span></td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="1" width="21%"><span style="color: #000000;">RDBMS</span></td>
+                <td colspan="1" rowspan="1" width="78%"><span style="color: #000000;">Relational Database Management
+                    System</span></td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="1" width="21%"><span style="color: #000000;">ER</span></td>
+                <td colspan="1" rowspan="1" width="78%"><span style="color: #000000;">Entity Relationship</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3 id="intended-audience">1.3 Intended Audience and Reading Suggestions</h3>
+
+          <p>Apart from project investors, this document is intended for the developers, designers, and testers who are
+            working on “crazyCrawler.” <br> Reading Suggestions: Sequentially</p>
+
+          <h3 id="product-scope">1.4 Prouduct Scope</h3>
+
+
+          <p>Many big data companies depend on data that is scraped from the internet. They heavily depend on web
+            crawlers. Often their job gets messy when they are trying to
+            fetch files like pdfs, documents or texts. We are developing a search engine which any data driven company/
+            user can use to easily fetch the document they are looking
+            for. It is as easy as putting a URL in the search bar and choosing what files to get, and viola they will
+            have all links leading to such files crawled and indexed for
+            them. Users can use this intuitive search engine not only to easily fetch such files, but also to create
+            clusters on this data.</p>
+
+
+          <h3 id="reference">1.5 References</h3>
+          <p>IEEE  Template  for System  Requirement  Specification  Documents: <a href = "https://goo.gl/nsUFwy">https://goo.gl/nsUFwy</a></p>
+
+          <h2 id="overall-description">2. Overall Description</h2>
+
+          <h3 id="product-perspective">2.1 Product Perspective</h3>
+
+          <twitterwidget class="twitter-tweet twitter-tweet-rendered" id="twitter-widget-0"
+            data-tweet-id="291978260433219584"
+            style="position: static; visibility: visible; display: block; transform: rotate(0deg); max-width: 100%; width: 500px; min-width: 220px; margin-top: 10px; margin-bottom: 10px;">
+          </twitterwidget>
+          <script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+          <p>"crazyCrawler" is a new, self-contained product designed with the aim to make web searching easier,
+            efficient and organized. It is a self-sustaining product without any subsystem or integrable part as of the
+            current release. The product is for any individual or group looking to search data from the web in a
+            precisely effective manner. Using it will enable users to make clusters of URLs and search for specific
+            contents in their cluster. Users can download, store and use the contents easily and efficiently. Especially
+            for the regular users, fast scraping of data using web crawlers is of great importance. With the aim to make
+            it easier for them, the product is developed.</p>
+
+          <h3 id="product-functions">2.2 Product Functions</h3>
+
+          <p>The following functionalities are included in the product:
+
+          <ul>
+            <li>Sign Up: User will sign up using a sign up form, google or facebook account.</li>
+            <li>Login: User will login to their respective accounts after creating it via the form, google or facebook
+              accounts.</li>
+            <li>Logout: User will be able to logout of the system upon completion of use.</li>
+            <li>Recover Password: User will be able to recover their lost / forgotten password. This option will be
+              available in the login page.</li>
+            <li>View User Profile: Users will be able to view their profile information.</li>
+            <li>View Dashbaord: Users can view a dashboard in their profile</li>
+            <li>Edit Profile: User will be able to edit their account, i.e. change profile photo, edit username, reset
+              password and edit other informations on the profile.</li>
+            <li>Search Content: User will search the website via a search engine for finding the desired websites to be
+              added to a cluster.</li>
+            <li>Make Clusters from Search Results: User will add the URLs of the desired websites to a selected cluster
+              after searching the web.</li>
+            <li>View Saved Clusters: Saved clusters can be viewed which idex links to contents.</li>
+            <li>Search Within Clusters: User will be able to search for a specific content type in a specific cluster
+              after making the cluster. The content types may be PDF, text, doc, non-html files or all types of contents
+              mixed.</li>
+            <li>Download / Save content: User will be able to download the searched contents into their system.</li>
+          </ul>
+          </p>
+
+          <h3 id="user-class">2.3 User Classes and Characteristics.</h3>
+
+          <p>The following user classes are classified based on the type of use of the product:
+          <ul>
+            <li>Professional Users: This includes any user who will be using the product for their professional work
+              under any company, organization or institution. They are the most important category of users who will,
+              perhaps use the product most frequently and at a large scale. A large quantity of data will be required to
+              be scraped by them for their works and this product will be of utmost urgency for them.</li>
+
+            <li>Personal Users: This class of users will be anyone who uses the product for their personal uses only.
+              Any individual such as a student, teacher, an employee or anyone who uses the product for non-professional
+              work are included in this category. After professional users, this category of users are the most
+              important.</li>
+
+            <li>Developers: This group of people are the programmers who are and will be working on the product in order
+              to further develop it, maintain it and update it in the future. They will be using the product to test if
+              it is working correctly, to update certain features and maintain them on a regular basis.</li>
+          </ul>
+          </p>
+
+          <h3 id="operating-env">2.4 Operating Environment</h3>
+
+          <p>
+            The product will be suitable for the following hardware platforms:
+          <ul>
+            <li>Computers</li>
+            <li>Mobile Phones</li>
+            <li>Tablets</li>
+          </ul>
+
+          The product will be suitable for the following operating systems:
+          <ul>
+            <li>Web Application: Any operating system having the following web browsers: Internet Explorer, Chrome or
+              Brave</li>
+
+            <li>Android Application: Only available for the devices with Android operating system.</li>
+          </ul>
+
+          The product will be compatible with any version of the aforementioned hardware platforms and operating system
+          releases.
+          </p>
+
+          <h3 id="design-imp-constraints">2.5 Design and Implementation Constraints</h3>
+
+          <p>From the part of the developers, there are some limitations. Such as, many websites (like amazon.com) do
+            not allow data crawling from their website. There are many such websites who have certain constraints over
+            data crawling. This is a limitation from the develper's end. In addition, the memory constraint is also a
+            limitation from the developer's end. All the data in all the websites need to be scraped and saved into the
+            database, which might lead to some memory issue. Lastly, since the product is for web and android only, it
+            will not be available for the users of operating systems other than android. </p>
+
+          <p>In order to use the product from any device other than android, the user must be using the web application.
+            In the making of the product, Django framework has been used with the integration of Rest API in the
+            backend. HTML, CSS, and JavaScript is used in the frontend of the web application. The product is developed
+            in Python for the web application and in Kotlin for the mobile application. The platform PyCharm is used to
+            manage, edit and integrate the different parts of the product. For the maintenance of the delivered product,
+            the developers themselves will be responsible and no intermediate oragnization will be involved.</p>
+
+          <h3 id="user-documentation">2.6 User Documentation</h3>
+
+          <p>As of the current release, no user manual, online help, tutorials or any sort of user documentation will be
+            released for the product. The product is very straight-forward and easy to use. Users will be able to use
+            the product without any sort of guide or help whatsoever. However, in the future releases, if any advanced
+            features are added to the product for which we think user documentation will be required, it will be
+            released then.
+          </p>
+
+          <h3 id="assumption-dependencies">2.7 Assumptions and Dependencies</h3>
+
+          <p>As for the web application part of the product, a browser is required to access it. It is assumed that the
+            browser that the user uses is compatible with the most updated version of HTML, CSS and JavaScript. It is
+            assumed that the browser is able to render, integrate and display the application correctly.</p>
+
+          <p>As for the mobile application part of the product, Kotlin will be used, which interoperates fully with
+            Java. So, it is assumed that the user will have Java installed on their phone. All these dependencies are
+            static and the smooth ruunning of the product depends on these factors.</p>
+            
+            <p>The system will be integrated with the Facebook and Google APIs for sign-up and login. Therefore, the system will be dependent on the data of the mentioned APIs for smooth running and conduct.</p>
+
+          <h2 id="external-interface">3. External Interface Requirements</h2>
+          <h3 id="user-interface">3.1 User Interfaces</h3>
+
+          <p>The user interface for the search engine shall be compatible to any web browser Internet Explorer, Chrome
+            or Brave by which user can access to the system. In addition to that it shall be compatible with mobile.
+            There will be multiple layers of interface between the software product and the users.</p>
+          <h4 id="ui-spec">User interface specifications:</h4>
+          <ol>
+            <li>Sign up: Field for email, password and confirm password would be here for a user to sign up for an
+              account. Upon clicking the button for sign up it would save the data and give a message of the account
+              being successfully created. And if the user already has an account, upon clicking the login button it
+              would go to the login page.</li>
+            <li>Login: A user will be able to login using social media sites like Google or Facebook along with having
+              the option of signing in using just a username and password. And lastly clicking the sign in button it
+              would login to a user’s account. It would also have the option of returning to the sign up page if a user
+              has not made an account. There would be a button for recovering password as well.</li>
+            <li>Password recovery: A field for entering email would be there and clicking the reset password would send
+              the verification to the mail for resetting the password. It would also have a button to go back to the
+              login page.</li>
+            <li>Search: Upon giving the url in the field and clicking the search button will send the user to the result
+              page. A user can also select different content type such as text, doc and pdf files to search./li>
+            <li>Result: The user can see the search results of the url ad visit the website links.</li>
+            <li>User profile: The user can save and edit information. An option for deleting account and resetting the
+              password would be there.</li>
+            <li>Search with clusters: The user will be able to search from the clusters made. It can also make a cluster
+              and edit it from the navigation bar.</li>
+            <li> Saved clusters: The user can view the saved clusters.</li>
+            <li>Dashbaord: The user can easily navigate to the clusters, search, about and settings upon clicking the
+              buttons. </li>
+          </ol>
+
+          <h3 id="hardware-interface">3.2 Hardware Interfaces</h3>
+          <p>All the hardware is required to connect to the internet, which will be hardware interface for the system.
+          </p>
+
+          <h3 id="software-interface">3.3 Software Interfaces</h3>
+          <p>The following are the software interfaces used for the project:</p>
+          <table style="text-align: justify; height: 78px;" border="2" width="360" cellspacing="1" cellpadding="1">
+            <tbody>
+              <tr>
+                <td colspan="1" rowspan="1" width="21%"><span style="color: #000000;">Operating system</span></td>
+                <td colspan="1" rowspan="1" width="78%"><span style="color: #000000;">We have chosen Windows as the
+                    operating system for its user-friendliness</span></td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="1" width="21%"><span style="color: #000000;">Database</span></td>
+                <td colspan="1" rowspan="1" width="78%"><span style="color: #000000;">To store user data, search data
+                    and cluster data we have chosen mySQL database</span></td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="1" width="21%"><span style="color: #000000;">Web Browsers (Any)</span></td>
+                <td colspan="1" rowspan="1" width="78%"><span style="color: #000000;">The web app opens in any web
+                    browser</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="com-interface">3.4 Communications Interfaces</h3>
+          <p>This project supports all types of web browsers.
+            The requirements associated with communications functions by this product includes forms, emails and social
+            media platforms.
+            Through emails or social media connection, data would be in sync, authentication will be verified and
+            recovery of account of a user would be possible.
+            It shall use the HTTP protocol for communication over the internet. </p>
+
+          <h2 id="system-features">4. System Features</h2>
+          <h3 id="use-case-diagram">4.1 Use Case Diagram</h3>
+          <div class="center">
+            <img id="UseCaseDiagram" src="images/UseCaseDiagram.svg">
+            <p><i>
+                <center>Figure: Use Case Diagram</center>
+              </i></p>
+          </div>
+          <h3 id="expanded-use-case">4.2 Expanded Use Case</h3>
+
+          <h3 id="sign-up">4.2.1 Signup</h3>
+
+          <p><u><b>Use case:</b></u> Signup</p>
+          <p><u><b>Precondition:</b></u> None</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To signup for an account</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Users can signup for an account using a valid email address or using a Google / Facebook account.</p>
+          <p><u><b> Priotrity: </b></u>Medium</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R2, R4, R8</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. User chooses to signup</p>
+              <p>&nbsp &nbsp 3. User inputs valid email address and password</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Display signup form</p>
+              <p>&nbsp &nbsp 4. Display successful signup message</p>
+              <p>&nbsp &nbsp 5. Redirect user to login page</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Steps 3-5: &nbsp &nbsp The user doesnt provide a valid email and cannot signup. </p>
+
+          <h3 id="log-in">4.2.2 Login</h3>
+
+          <p><u><b>Use case:</b></u> Login</p>
+          <p><u><b>Precondition:</b></u> User must have executed "Signup" at any time in the past</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To log in to user account</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Users can provide their emails and passwords saved in to the system when they signed up.
+            Or they can directly login using their Google / Facebook account.
+          </p>
+          <p><u><b> Priotrity: </b></u>Medium</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R5, R6, R7, R8, R9, R10, R11, R12, R13</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. User chooses to login</p>
+              <p>&nbsp &nbsp 3. User provides email and pass</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Display login form </p>
+              <p>&nbsp &nbsp 4. Display successful login message</p>
+              <p>&nbsp &nbsp 5. Redirect user to dashboard page</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Step 3: &nbsp &nbsp User chooses to log in through Google/Facebook account.</p>
+
+          <h3 id="log-out">4.2.3 Logout</h3>
+
+          <p><u><b>Use case:</b></u> Logout</p>
+          <p><u><b>Precondition:</b></u> "Login" must have been executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To log out of user account</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Users can log out of their accounts after they had logged in.</p>
+          <p><u><b> Priotrity: </b></u>High</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R1, R2, R4, R8</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. User chooses to logout</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Display successful logout message</p>
+              <p>&nbsp &nbsp 3. Redirect to login page</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+
+          <h3 id="recover-pass">4.2.4 Recover Password</h3>
+
+          <p><u><b>Use case:</b></u> Recover Password</p>
+          <p><u><b>Precondition:</b></u> 'Sign up' must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To recover account if password forgotten</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Within the recover password the user will be able to reset password through email and able to sign in their
+            account</p>
+          <p><u><b> Priotrity: </b></u>Medium</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R1, R8</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Choose forgot password</p>
+              <p>&nbsp &nbsp 3. Input email address</p>
+              <p>&nbsp &nbsp 4. Enter new password</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Display a bar to enter email address</p>
+              <p>&nbsp &nbsp 3. Displays reset password option</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Step 3: &nbsp &nbsp The user creates a new account and logs in with that new account. </p>
+
+          <h3 id="view-user-profile">4.2.5 View User Profile</h3>
+
+          <p><u><b>Use case:</b></u> View User Profile</p>
+          <p><u><b>Precondition:</b></u> 'Log In' must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To able to view user information</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Within the user profile, the user can view all information related to the user's account</p>
+          <p><u><b> Priotrity: </b></u>Low</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R6, R7, R8 </p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Select user profile</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Displays all information of the user</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+
+          <h3 id="view-dashboard">4.2.6 View Dashboard</h3>
+
+          <p><u><b>Use case:</b></u> View Dashaboard</p>
+          <p><u><b>Precondition:</b></u> 'Log in' must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To be able go to different menu</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Within dashboard the user can go to their account, search and view clusters. </p>
+          <p><u><b> Priotrity: </b></u> Medium</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R5, R8, R10</p>
+
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Choose Dashboard</p>
+              <p>&nbsp &nbsp 2. Select search.</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 3.Display search bar to search</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Step 2 and 3: &nbsp &nbsp The user can also choose to select account information, about, or clusters for
+            which it shows those information. </p>
+
+          <h3 id="edit-profile">4.2.7 Edit Profile</h3>
+
+          <p><u><b>Use case:</b></u> Edit user profile information</p>
+          <p><u><b>Precondition:</b></u> 'Log in’ must have been executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To change or edit any information of a user</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>When the user logs in their account and they choose to edit any information of their account. </p>
+          <p><u><b> Priotrity: </b></u>Low</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R5</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. The user chooses to edit account</p>
+              <p>&nbsp &nbsp 3. The user can change birthdate, email and phone number.</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Displays edit mode.</p>
+              <p>&nbsp &nbsp 4. Displays the information after changing</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Step 4: &nbsp &nbsp The user can delete account. They can also reset password.</p>
+
+          <h3 id="search-content-url">4.2.8 Search Content</h3>
+          <p><u><b>Use case:</b></u> Search content</p>
+          <p><u><b>Precondition:</b></u> None</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To search for content within a URL</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Users can provide a url in the search bar and select the depth it wants the site to be crawled. The user
+            also specifies the type of
+            content he/she wants to be indexed from this URL.</p>
+          <p><u><b> Priotrity: </b></u>High</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R5, R9</p>
+
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Provide URL</p>
+              <p>&nbsp &nbsp 2. Choose depth</p>
+              <p>&nbsp &nbsp 3. Select content type: PDF</p>
+              <p>&nbsp &nbsp 4. Search</p>
+
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 5. Show search result</p>
+            </div>
+
+          </div>
+
+
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Step 3:&nbsp &nbsp The user can also select other content type such as DOC, .TXT FILES, ALL CONTENTS,
+            NON-HTML CONTENTS etc. and search.</p>
+
+          <h3 id="index-urls">4.2.9 Make Clusters From Search Results</h3>
+
+          <p><u><b>Use case:</b></u> Create clusters on search results</p>
+          <p><u><b>Precondition:</b></u> "Search Content" must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To create clusters on search results</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>The search results obtained from the search page can be saved into clusters. Users can access these from
+            their profiles.</p>
+          <p><u><b> Priotrity: </b></u>High</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R10</p>
+
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Save search results</p>
+              <p>&nbsp &nbsp 2. Form clusters</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 3. Save clusters in database</p>
+              <p>&nbsp &nbsp 4. Redirect user to saved cluster list</p>
+              <p>&nbsp &nbsp 5. Display clusters in user's saved cluster list</p>
+            </div>
+
+          </div>
+
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Steps 2-5:&nbsp &nbsp User's limit for creating clusters might be exceeded and they cannot create anymore
+            clusters.
+          </p>
+
+          <h3 id="view-saved-cluster">4.2.10 View Saved Clusters</h3>
+
+          <p><u><b>Use case:</b></u> Search within clusters</p>
+          <p><u><b>Precondition:</b></u> Create clusters must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To search within clusters</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Within the saved clusters users can search for anything by providing keywords.</p>
+          <p><u><b> Priotrity: </b></u>High</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R11</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Choose saved cluster</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Display results in cluster search page</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+
+          <h3 id="search-cluster">4.2.11 Search within clusters</h3>
+
+          <p><u><b>Use case:</b></u> Search within clusters</p>
+          <p><u><b>Precondition:</b></u> "Create Clusters" must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To search within clusters</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Within the saved clusters users can search for anything by providing keywords.</p>
+          <p><u><b> Priotrity: </b></u>High</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3. R12</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Choose saved cluster</p>
+              <p>&nbsp &nbsp 2. Input search keyword</p>
+              <p>&nbsp &nbsp 3. Search within saved clusters</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 4. Display results in cluster search page</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Steps 2-4:&nbsp &nbsp User enters keyword that is not found anywhere in the cluster.</p>
+
+          <h3 id="view-content">4.2.12 View Content</h3>
+
+          <p><u><b>Use case:</b></u> View Content</p>
+          <p><u><b>Precondition:</b></u> "Search Content" must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To view content following links indexed in the search result/ cluster</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Within the search results/ saved clusters links to contents of a type (previously chosen by the user)
+            are listed. Each link leads the user to the content. From there they can view the content.
+          </p>
+          <p><u><b> Priotrity: </b></u>High</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p>R3, R13</p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Select a link indexed in the search results/ cluster</p>
+              <p>&nbsp &nbsp 4. View content in the link</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Redirect user to the content in the link</p>
+              <p>&nbsp &nbsp 3. Display content in the link</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+
+          <h3 id="download-save-content">4.2.13 Download Content</h3>
+
+          <p><u><b>Use case:</b></u> Download Content</p>
+          <p><u><b>Precondition:</b></u> "View Content" must be executed</p>
+          <p><u><b>Actor:</b></u> User</p>
+          <p><u><b>Goal:</b></u> To download content following links indexed in the search results/ cluster</p>
+          <p><u><b>Overview:</b></u> </p>
+          <p>Within the saved clusters links to contents of a type (previously chosen by the user) are listed.
+            Each link leads the user to the content. From there they can download the content.
+          </p>
+          <p><u><b> Priotrity: </b></u>High</p>
+          <p><u><b>Cross Reference</b></u>:</p>
+          <p></p>
+
+          <p><u><b>Typical course of events:</b></u></p>
+          <div class="row">
+            <div class="column">
+              <p><b>&nbsp &nbsp Actor:</b></p>
+              <p>&nbsp &nbsp 1. Open content indexed by the URL
+              <p>&nbsp &nbsp 3. Choose to download content</p>
+            </div>
+            <div class="column">
+              <p><b>&nbsp &nbsp System Response:</b></p>
+              <p>&nbsp &nbsp 2. Display content</p>
+              <p>&nbsp &nbsp 4. Download content to local device</p>
+            </div>
+
+          </div>
+          <p><u><b>Alternate course of events:</b></u></p>
+          <p>Steps 3-4: User does not download the content.</p>
+
+
+
+          <h2 id="other-non-requirements">5. Other Nonfunctional Requirements</h2>
+
+          <h3 id="performance-requirements">5.1 Performance Requirements</h3>
+          <p>The performance of the product is dependent upon the hardware of the user as the product shall be based on
+            the web. It shall run from a web server so the performance speed and load time lies on the strength of the
+            internet connection. The user device must have a running web browser version of Google Chrome, Internet
+            Explorer or Brave. For the android application, the user device must have a minimum Android OS version xyz.W
+          </p>
+
+          <h3 id="safety-requirements">5.2 Safety Requirements</h3>
+          <p>To ensure that no data loss of users happen using this product. And to secure that, the developer team is
+            to do regular updates and backup. The developers are solely responsible for the safety measures and regular
+            checking and testing for bugs. No safety certification should have to be followed in particular.</p>
+
+          <h3 id="security-requirements">5.3 Security Requirements</h3>
+
+         <p>
+  The product must follow industry recommended practices for secure software development. At a minimum, the software development team must practice the principle of least privilege for defining access-level requirements of the software system and its associated services. The following specific security measures must be ensured:
+  <ul>
+    <li>Local DNS servers should be tested for their response to high work loads. The Web crawler should detect a condition in which, for example, if 90% of DNS lookups failed during one cycle, it should stop. The Web crawler also could avoid resolving more than a fixed number of domain names at the same time and with the same DNS server.</li>
+
+    <li>The crawler should re-try each web page a number of times if the page is down, and the interval should be several hours.</li>
+
+    <li>The crawler should avoid overloading Web sites.</li>
+
+    <li>All network operations should have a timeout. The crawler must be prepared, because at any point of the download operation it could stop receiving data.</li>
+
+    <li>Besides a timeout, a lower speed limit should be enforced by the crawler to ensure smooth crawling of data.</li>
+
+    <li>Higher server bandwidth should be ensured for greater user traffic associated with the product.</li>
+  </ul>
+</p>
+
+<h3 id="software-quality-attributes">5.4 Software Quality Attributes</h3>
+<ul>
+	<li>Availability: It should be ensured that the system is operating properly when it is requested for use. In other words, it should be ensured that a system is not failed or undergoing a repair action when it needs to be used.</li>
+	<li>Maintainability: It should be ensured that the system can be modified to correct faults, improve performance or other attributes, or adapt to a changed environment.</li>
+	<li>Adaptability: It is to be ensured that the system adapts to change in its environment. An adaptable software system can tolerate changes in its environment without external intervention and tolerate some deviations in the environment.</li>
+	<li>Flexibility: It must be ensured that the system will respond to potential internal or external changes in a timely and cost-effective manner.</li>
+	<li>Interoperability: It must be ensured that the product is capable of different solutions and that they can communicate with one another freely and easily. The system can exchange information in real-time, without the need for specialized IT support or behind-the-scenes coding.</li>
+	<li>Portability: It must be ensured that the product is able to run properly in a different platform to the one it was designed for, with little or no modification. Where modification is needed, the task of modifying the software to allow it to run in the new environment by porting must be ensured.</li>
+	<li>Reliability: Reliability must be ensured via a failure-free operation of the product for a specified period in a specified environment. The product must be reliable in an operational environment with excellent accuracy.</li>
+	<li>Reusability: Reusability must be ensured through the use of existing assets in some form within the software product development process. These assets are products and by-products of the software development life cycle and include code, software components, test suites, designs and documentation.</li>
+	<li>Correctness: It must be ensured that the product responses accurately to the user when the user uses it accurately. Strict adherence to how the users can interact with the software should be ensured.</li>
+	<li>Robustness: The software product must be robust, i.e. the product should be able to function properly in the presence of various invalid inputs and stressful environments. The product should not break down and become dysfunctional immediately under these circumstances.</li>
+	<li>Testability: The product should have a high degree of supporting unit testing in a given text context. If the testability of the product is good, finding faults in the system will be very easy if the system has one.</li>
+	<li>Usability: It should be ensured that the usability of the product is strong. That is, the quality of a user's experience when using the product should be good. Effective, efficient and satisfactory experience is the target of this product.</li>
+</ul>
+<h3 id="business-rules">5.5 Business Rules</h3>
+
+<p>The following business rules must be followed in the making of the product:
+<ul>
+  <li>There will be no admin dependency of the product.</li>
+  <li>The developers will be responsible for for all back-end system configurations.</li>
+  <li>The developers will be responsible for all schemas and templates.</li>
+  <li>The developers will be responsible for maintaining and supervising all the user accounts.</li>
+  <li>The developers will be responsible for maintaining all the predefinded queries.</li>
+  <li>The users must create an authenticated account in order to make clusters and search within the clusters.</li>
+</ul>
+</p>
+
+<h2 id="other-requirements">6. Other Requirements</h2>
+
+<h3 id="glossary">Appendix A: Glossary</h3>
+
+<ul>
+  <li>Application Programming Interface (API): A system of tools and resources (e.g., subroutine definitions, protocols) in an operating system that enables developers to create
+  software applications.</li>
+  <li>Extensible Markup Language (XML): A markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable in accordance with the World Wide Web Consortium (W3C) specification.</li>
+  <li>HyperText Markup Language (HTML): The standard markup language for creating web pages and web applications in accordance with ISO/IEC 15445 and W3C HTML5.</li>
+  <li>HyperText Transfer Protocol (HTTP): An application protocol for distributed, collaborative, and hypermedia information systems in accordance with RFC 7230 and RFC 7540.</li>
+  <li>HyperText Transfer Protocol Secure (HTTPS): A communications protocol for secure communication over a computer network using Hypertext Transfer Protocol (HTTP) within a connection encrypted by Transport Layer Security (TLS), or its predecessor, Secure Sockets Layer (SSL).</li>
+  <li>Entity Relationship Diagram (ERD): A graphic representation of an entity-relationship model.</li>
+  <li>Software Requirements Specification (SRS): A requirements specification pertaining to a software system. </li>
+  <li>Unified Modeling Language (UML): A standardized language
+  for modeling problems or solutions.</li>
+  <li>Database (DB): A structured set of data held in a computer, especially one that is accessible in various ways.</li>
+  <li>Relational Database Management System (RDBMS): The software used to store, manage, query, and retrieve data stored in a relational database.</li>
+  <li>User Interface (UI): The user interface (UI) is the point of human-computer interaction and communication in a device. This can include display screens, keyboards, a mouse and the appearance of a desktop. It is also the way through which a user interacts with an application or a website.</li>
+  <li>Actor: A person, a system or a technical device in the context of a system that interacts with the system.</li>
+  <li>Bug: Any kind of defect in a product.</li>
+  <li>Class: Represents a set of objects of the same kind by describing the structure of the objects, the ways they can be manipulated and how they behave.</li>
+  <li>Constraint: A requirement that limits the solution space beyond what is necessary for meeting the given functional requirements and quality requirements.</li>
+  <li>Domain: A range of relevant things (for some given matter); for example, an application domain.</li>
+  <li>Efficiency: The degree to which a result is achieved with minimum consumption of resources.</li>
+  <li>Functionality: The capabilities of a system as stated by its functional requirements.</li>
+  <li>Glossary: A collection of definitions of terms that are relevant in some domain. Frequently, a glossary also contains cross-references, synonyms, homonyms, acronyms, and abbreviations.</li>
+  <li>Maintainability: The ease with which a software system can be modified to correct faults or adapt the system to changing needs.</li>
+  <li>Model: An abstract representation of an existing reality or a reality to be created.</li>
+  <li>Non-functional Requirement: A quality requirement or a constraint.</li>
+  <li>Portability: The ease with which a system can be transferred to another platform (while preserving its functionality).</li>
+  <li>Priority: Documents the importance of a requirement in comparison to other requirements according to given criteria.</li>
+  <li>Quality: The degree to which a set of inherent characteristics of an entity fulfills requirements.</li>
+  <li>Redundancy: Multiple occurrence of the same information or resource.</li>
+  <li>Release: A configuration that has been released for installation and use by customers.</li>
+  <li>Reliability: The capability of a system to maintain a specified level of functionality and performance when used under specified conditions.</li>
+  <li>Security: The capability of a system to protect (a) its data and resources against unauthorized use and (b) its legitimate users against denial of service.</li>
+  <li>Tool (in software engineering): A (software) system that helps develop, operate and maintain systems.</li>
+  <li>Usability: The capability of a system to be understood, learned, used, and liked by its users.</li>
+  <li>Use case: A description of the interactions possible between actors and a system that, when executed, provide added value.</li>
+  <li>User: A person who uses the functionality provided by a system.</li>
+  <li>Validation: The process of checking whether documented requirements match the stakeholders’ needs.</li>
+  <li>Version: If an entity exists in multiple, time-ordered occurrences, where each occurrence has been created by modifying one of its predecessors, every occurrence is a version of that entity.</li>
+</ul>
+
+<h3 id="analysis-methods">Appendix B: Analysis Methods</h3>
+
+<p>No specific analaysis methods will be needed to be used for the development of the product.</p>
+
+
+<h3 id="tb-list">Appendix C: To be determined list</h3>
+
+<p>The following features and updates are to be determined in the future and they are required to be tracked:
+<ul>
+  <li>User Feedback: In the future, there should be a part in the UI of the product for accepting user inputs and messages via a feedback system. Utilizing these feedbacks, the developers will be able to work on bugs, fix certain issues and problems faced by the users while using the product.</li>
+
+  <li>Media Files Crawling: In the future updates, along with the mentioned content-types that can be crawled, media files such as images, audio files and video files should be included too.</li>
+</ul>
+</p>
+
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

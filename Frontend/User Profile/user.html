@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'><link rel="stylesheet" href="./main.css">
+
+</head>
+<body  style="background-image: url('images/background-1.jpg');">
+
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js'></script><script  src="./main.js"></script>
+
+   <div id="mySidenavigation" class="sidenavigation">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a>
+      <a href="#">Profile</a>
+      <a href="#">Make a cluster</a>
+      <a href="#">Saved clusters</a>
+      <a href="#">Search</a>
+      <a href="#">About</a>
+      <a href="#">Settings</a>
+    </div>
+
+    <div class = "nav" style="font-size:40px;cursor:pointer; color: fuchsia;" onclick="openNavigation()">&#9776;</span>
+      
+    </div>
+
+  <div class="container-user">
+    <div class="wrap-user">
+      <div ng-app="userProfile" ng-controller="Ctrl">
+        <md-card>
+          <md-toolbar>
+            <div class="md-toolbar-tools">
+              <h2>
+                <span>User Profile</span>
+              </h2>
+              <span flex></span>
+              <md-button class="md-icon-button" ng-if="viewMode" ng-click="switchMode()">
+                <md-tooltip>
+                  Edit Profile
+                </md-tooltip>
+                <md-icon>mode_edit</md-icon>
+              </md-button>
+              <md-button class="md-icon-button" ng-if="!viewMode" ng-click="switchMode(); saveChanges()">
+                <md-tooltip>
+                  Save Changes
+                </md-tooltip>
+                <md-icon>save</md-icon>
+              </md-button>
+              <md-menu>
+                <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                  <md-tooltip>
+                    More Options
+                  </md-tooltip>
+                  <md-icon>more_vert</md-icon>
+                </md-button>
+                <md-menu-content>
+                  <md-menu-item>
+                    <md-button ng-click="deleteUser()">
+                      <md-icon>delete</md-icon>
+                      Delete User
+                    </md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button ng-click="resetPassword()">
+                      <md-icon>replay</md-icon>
+                      Reset Password
+                    </md-button>
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+            </div>
+          </md-toolbar>
+          <md-card-content layout-sm="column" layout-gt-sm="row">
+            <div class="user" layout-sm layout-gt-sm="column">
+              <img
+                src="https://lh3.googleusercontent.com/-W2XryVdi-lA/U6tSAh3SsbI/AAAAAAAAFGY/ZHJiUEcR_Zs/w480-h480/avatar%2Bmaterial%2Bdesign.png"
+                alt="user avatar" class="user-avatar" />
+              <md-button class="md-icon-button user-avatar-edit" ng-click="browserAvatar()">
+                <md-icon>photo_camera</md-icon>
+              </md-button>
+              <form name="userBasicInfoForm" layout="column" layout-align="start" layout-align-sm="center start" flex>
+                <md-input-container class="user-input-container">
+                  <label>Name</label>
+                  <textarea name="userName" required class="user-name" ng-model="user.name" ng-disabled="viewMode"
+                    flex></textarea>
+                  <div ng-messages="userBasicInfoForm.userName.$error">
+                    <div ng-message="required">This is required.</div>
+                  </div>
+                </md-input-container>
+
+              </form>
+            </div>
+            <form name="userDetailsForm" flex>
+              <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                  <label>Gender</label>
+                  <input required name="userGender" ng-model="user.gender" ng-disabled="viewMode"></input>
+                  <div ng-messages="userDetailsForm.userGender.$error">
+                    <div ng-message="required">This is required.</div>
+                  </div>
+              </div>
+              <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                  <label>Birthday</label>
+                  <input name="userBirthday" required ng-model="user.birthday" ng-disabled="viewMode"></input>
+                  <div ng-messages="userDetailsForm.userBirthday.$error">
+                    <div ng-message="required">This is required.</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                  <label>Phone number</label>
+                  <input type="tel" name="userPhone" required ng-model="user.phone" ng-disabled="viewMode"></input>
+                  <div ng-messages="userDetailsForm.userPhone.$error">
+                    <div ng-message="required">This is required.</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <md-input-container>
+                <label>Email 1</label>
+                <input type="email" name="userMail" ng-model="user.email" ng-disabled="viewMode"></input>
+                <div ng-messages="userDetailsForm.userMail.$error">
+                  <div ng-message="email">Email address is invalid</div>
+                </div>
+              </md-input-container>
+              <md-input-container>
+                <label>Email 2</label>
+                <input type="email" name="userOtherEmail" ng-model="user.otherEmail" ng-disabled="viewMode"></input>
+                <div ng-messages="userDetailsForm.userOtherEmail.$error">
+                  <div ng-message="email">Email address is invalid</div>
+                </div>
+              </md-input-container>
+            </form>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openNavigation() {
+      document.getElementById("mySidenavigation").style.width = "250px";
+    }
+
+    function closeNavigation() {
+      document.getElementById("mySidenavigation").style.width = "0";
+    }
+    </script>
+
+</body>
+
+</html>
