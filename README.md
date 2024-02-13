@@ -91,6 +91,7 @@ The following functionalities are included in the product:
   
 
 ## Contact Details:
+Mohammad Junayed Hasan: junayedhasan100@gmail.com
 
 Alif Elham Khan: elhamk [DOT] corp [AT] gmail [DOT] com <br>
 
