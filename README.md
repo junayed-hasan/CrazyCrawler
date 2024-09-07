@@ -89,7 +89,7 @@ The following functionalities are included in the product:
 >The application is compatible with both desktops (web-based) and Android devices.
 
   
-*** Contributions can be viewed in: https://github.com/alifelham/File-Search-Engine-App
+* Contributions can be viewed in: https://github.com/alifelham/File-Search-Engine-App/graphs/contributors
 
 ## Contact Details:
 Mohammad Junayed Hasan: junayedhasan100@gmail.com
