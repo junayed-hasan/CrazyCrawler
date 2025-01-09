@@ -78,7 +78,7 @@ The following functionalities are included in the product:
 
 5. CSS / SCSS
 
-6. Elastic Search
+6. Scrapy
 
 6. Google OAuth
 
